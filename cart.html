@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>grocery list</title>
+    <style>
+      .container {
+        align-items: center;
+        text-align: center;
+        background-image: url(../assignment2/cart.jpg);
+        background-repeat: no-repeat;
+        color: beige;
+        background-size: cover;
+      }
+      .msg {
+        color: orangered;
+      }
+    </style>
+  </head>
+  <body ng-app="myApp" class="container">
+    <div ng-controller="cartController" class="container-fluid">
+      <h1>Groceries</h1>
+      <div class="row">
+        <div class="col-sm-3 col-md-6">
+          <h2>Buy List</h2>
+          <table class="table">
+            <tr ng-repeat="item in buyItems">
+              <td>{{item.name}}</td>
+              <td>{{item.quntity}}</td>
+              <td>
+                <button class="btn-primary" type="submit" ng-click="buy(item)">
+                  Buy
+                </button>
+              </td>
+            </tr>
+          </table>
+          <h4 class="msg">{{message}}</h4>
+        </div>
+        <div class="col-sm-3 col-md-6">
+          <h2>Bought List</h2>
+          <table class="table">
+            <tr ng-repeat="boughtitem in boughtItems">
+              <td>{{boughtitem.name}}</td>
+              <td>{{boughtitem.quntity}}</td>
+              <td>
+                <button
+                  type="submit"
+                  ng-click="remove(item1)"
+                  class="btn-primary"
+                >
+                  Remove
+                </button>
+              </td>
+            </tr>
+          </table>
+          <h4 class="msg" ng-hide="boughtItems.length">not yet Bought</h4>
+        </div>
+      </div>
+    </div>
+
+    <script src="cart.js"></script>
+  </body>
+</html>
